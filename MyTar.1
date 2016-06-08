@@ -1,0 +1,76 @@
+.TH MyTar 1 "02 June 2016" "version 1.0"
+
+.SH NAME
+.BR MyTar " - customized manipulation of tape archives"
+
+.SH SYNOPSIS
+.BR MyTar " -[cftvxz]"
+.IR tarfile " [ path [ ... ] ]"
+
+.SH DESCRIPTION
+.BR MyTar " builds and restores tape archives. It bundles files and directories together in a single file so that it can be easily transfered to some other location. When a directory is added, all files and sub-directories within the added directory are added to the archive. When extracting or listing the archive, the archived file must be uncompressed if previously compressed with the -z flag during creation. " MyTar " is not interoperable with GNU tar. MyTar only works on files and directories (no symbolic links). "
+
+.B
+.IP -c 
+Create a new tape archive and places it in the specified tarfile. When used with increased verbosity, each file is listed as it is added to the archive. If the tarfile exists, it is overwritten, otherwise a new tarfile is created. When a directory is passed to MyTar, all the files and directories below it are added to the archive.
+
+.B
+.IP -t 
+Print the table of contents of an archive. When used with increased verbosity, a long listing of each archived file is generated. MyTar will list all the files within the archive file passed to the program.
+
+.B
+.IP -x 
+Extract the contents of an archive. The archive must be uncompressed. When used with increased verbosity, lists the files that are extracted as they are read from the archive. MyTar will restore the modification times of all files that are extracted, but not drectories.
+
+.B
+.IP -v
+Increase the verbosity (prints detailed information about the archive when used with the -c, -t, -x flags).
+
+.B
+.IP -f
+(Required Flag) Specifies archive filename passed on the commandline as tarfile. This flag must be passed for the program to work at all. The flag specifies that the file following the flags is the tarfile.
+
+.B
+.IP -z
+Compresses the tarfile after creation (works only in create mode currently).
+
+.SH EXIT STATUS
+The
+.BR MyTar " utility exits 0 on success, and >0 if an error occurs."
+
+.SH EXAMPLES
+The following creates a new archive called 
+.IR tarfile " that contains two files, " source.c " and " source.h
+.RS
+.B MyTar -cf
+.I tarfile source.c source.h
+.RE
+
+To view a detailed table of contents (long listing) for this archive
+.RS
+.B MyTar -tfv
+.I tarfile
+.RE
+
+To compress the 
+.IR tarfile " after creation with gzip"
+.RS
+.B MyTar -cfz
+.I tarfile source.c source.h
+
+.SH SEE ALSO
+gzip(1), tar(1)
+
+.SH AUTHOR
+Erik Matthew Phillips, ephill07@calpoly.edu
+
+.SH COPYRIGHT
+Copyright (c) 2016, Erik Matthew Phillips
+
+California Polytechnic State University
+
+San Luis Obispo, California
+
+ephill07@calpoly.edu
+
+All rights reserved.
