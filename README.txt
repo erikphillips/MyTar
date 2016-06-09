@@ -18,3 +18,6 @@ USAGE and DESCRIPTION:
 Please refer to the man page ‘MyTar’
 This can be viewed by entering "man ./MyTar" when in the MyTar directory
 
+GITHUB:
+This project can be found on GitHub at: https://github.com/erikphillips/MyTar 
+ 
